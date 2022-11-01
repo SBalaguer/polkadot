@@ -488,6 +488,10 @@ impl<T: Config> Pallet<T> {
 				});
 			}
 
+			// Now we can place a lock on the paraID, so that the paraID can't be changed once a bid has been placed.
+			T::Registrar::apply_lock(para);
+
+
 			// Return any funds reserved for the previous winner if we are not in the ending period
 			// and they no longer have any active bids.
 			let mut outgoing_winner = Some((bidder.clone(), para, amount));
