@@ -489,7 +489,7 @@ impl<T: Config> Pallet<T> {
 			}
 
 			// Now we can place a lock on the paraID, so that the paraID can't be changed once a bid has been placed.
-			// TODO: Check what happens when a crowdloan bids, as the crowdloan already has a lock applied.
+			// If the paraID is already locked (paraID with open Crowdloan), then nothing will change.
 			T::Registrar::apply_lock(para);
 
 
